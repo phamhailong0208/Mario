@@ -1,0 +1,3 @@
+sources/app/game/mario_game/ma_game_block.cpp:5:6:void ma_game_block_setup()	8	static
+sources/app/game/mario_game/ma_game_block.cpp:27:6:void ma_game_block_update()	24	static
+sources/app/game/mario_game/ma_game_block.cpp:49:6:void ma_game_block_handler(ak_msg_t*)	8	static
