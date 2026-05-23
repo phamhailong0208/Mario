@@ -1,62 +1,115 @@
 #include "ma_game_mushroom.h"
 #include "ma_game_mario.h"
 #include "scr_mario_game.h"
+#include "ma_game_bullet.h"
+#include "ma_game_brick.h"
 
 ma_game_mushroom_t mushroom[NUM_MUSHROOMS];
 
-uint32_t gen_random_pos_mushroom(uint8_t i) {
+uint32_t gen_random_pos_mushroom() {
     uint32_t new_x;
-    bool ok;
-    do {
-        ok = true;
-        new_x = (rand() % 60) + 150;
-        for (uint8_t j = 0; j < i; j++) {
-            // if (j == i) continue;
-            if (abs((int)new_x - (int)mushroom[j].x) < 40) {
-                ok = false;
-                break;
-            }
-        }
-    } while (!ok);
+    new_x = (rand() % 40) + LCD_WIDTH;
     return new_x;
 }
 
 void ma_game_mushroom_setup() {
     for (uint8_t i = 0; i < NUM_MUSHROOMS; i++) {
-        mushroom[i].isReset = false;
         mushroom[i].y = AXIS_Y_MUSHROOM;
-        uint32_t new_x = gen_random_pos_mushroom(i);
+        uint32_t new_x = gen_random_pos_mushroom();
         mushroom[i].x = new_x;
         mushroom[i].visible = WHITE;
+        mushroom[i].turnBack = false;
+        mushroom[i].isDown = false;
     }
 }
 
 void ma_game_mushroom_run () {
     for (uint8_t i = 0; i < NUM_MUSHROOMS; i++) {
         if (mushroom[i].visible == WHITE) {
-            mushroom[i].x -= 2;
-            if (mushroom[i].x == 0) {
-                    uint32_t new_x = gen_random_pos_mushroom(i);
-                    mushroom[i].x = new_x;
-                }
+            if (SIZE_BRICK_X > abs(brick.x + SIZE_BRICK_X - camera_x - mushroom[i].x)) {
+                // mushroom[i].turnBack = true;
+                mushroom[i].turnBack = !mushroom[i].turnBack;
             }
+
+            if (mushroom[i].isDown == false && mushroom[i].turnBack == false) mushroom[i].x -= 2;
+            else if (mushroom[i].isDown == false && mushroom[i].turnBack == true) mushroom[i].x += 2;
+            // // else if (mushroom[i].isDown == false && SIZE_BRICK_X > abs(brick.x - camera_x - mushroom[i].x)) mushroom[i].x +=2;
+            if (mushroom[i].x + SIZE_BITMAP_MUSHROOM_X > LCD_WIDTH) {
+                // mushroom[i].visible = BLACK;
+                mushroom[i].turnBack = false;
+            }
+            // if (mushroom[i].isDown == false) mushroom[i].x -=2;
         }
+    }
 }
 
 
 void ma_game_mushroom_crash() {
+    switch (mario.state)
+    {
+        case SMALL: {
+            if(mushroom[0].visible == WHITE) {
+                if (mario.visible == WHITE) {
+                    if ( (int)SIZE_BITMAP_MARIO_Y_SMALL/2 > abs(mushroom[0].x - mario.x)) {
+                        if (mario.on_ground == 0) {
+                            mushroom[0].isDown = true;
+                            // ma_game_score += 100;
+                        }
+                    }
+                }
+            }
+        }
+            break;
+        case BIG: {
+            if( mushroom[0].visible == WHITE ) {
+                if (mario.visible == WHITE) {
+                    if ( (int)SIZE_BITMAP_MARIO_Y/2 > abs(mushroom[0].x - mario.x)) {
+                        if (mario.on_ground == 0) {
+                            mushroom[0].isDown = true;
+                            // ma_game_score += 100;
+                        }
+                    }
+                }
+            }
+        }   
+            break;
+        case FIRE: {
+            if( mushroom[0].visible == WHITE ) {
+                if (mario.visible == WHITE) {
+                    if ( (int)SIZE_BITMAP_MARIO_Y/2 > abs(mushroom[0].x - mario.x)) {
+                        if (mario.on_ground == 0) {
+                            mushroom[0].isDown = true;
+                            // ma_game_score += 100;
+                        }
+                    }
+                }
+            }
+        }
+            break;
+        default:
+            break;
+    }
     for (uint8_t i = 0; i < NUM_MUSHROOMS; i++) {
         if (mushroom[i].visible == WHITE) {
             if (mario.visible == WHITE) {
-                if ((SIZE_BITMAP_MARIO_X_SMALL > abs(mushroom[i].x - mario.x))) {
+                if (((int)SIZE_BITMAP_MARIO_X_SMALL/2 > abs(mushroom[i].x - mario.x))) {
                     if (mario.on_ground == 0) {
-                        // mushroom[i].visible = BLACK;
-                        // mushroom[i].state = DOWN;
-                        mushroom[i].visible = BLACK;                      
-                        // timer_set(  MA_GAME_MUSHROOM_ID, \
-                        //             MA_GAME_MUSHROOM_RESPAWN, \
-                        //             4000, \
-                        // TIMER_PERIODIC);
+                        mushroom[i].isDown = true;
+                    }
+                }
+            }
+        }
+    }
+}
+
+void ma_game_mushroom_bullet_crash() {
+    for (uint8_t i = 0; i < NUM_MUSHROOMS; i++) {
+        if (mushroom[i].visible == WHITE) {
+            if (bullet.visible == WHITE) {
+                if (((int)SIZE_BITMAP_MUSHROOM_X/2 > abs(mushroom[i].x - bullet.x))) {
+                    if (SIZE_BITMAP_MUSHROOM_Y > abs(mushroom[i].y - bullet.y)) {
+                        task_post_pure_msg(MA_GAME_MUSHROOM_ID, MA_GAME_MUSHROOM_RESET);
+                        task_post_pure_msg(MA_GAME_BULLET_ID, MA_GAME_BULLET_RESET);
                     }
                 }
             }
@@ -65,25 +118,39 @@ void ma_game_mushroom_crash() {
 }
 
 void ma_game_mushroom_reset() {
-    for (uint8_t i = 0; i < NUM_MUSHROOMS; i++) {
-        // mushroom[i].x = (rand() % 60) + 150;
-        mushroom[i].isReset = true;
-        mushroom[i].visible = BLACK;
-        // mushroom[i].action_image = rand() % 3 + 1;
-    }
+    mushroom[0].isDown = false;
+    // mushroom[0].x = mushroom[0].y = 0;
+    mushroom[0].visible = BLACK;
 }
 
 void ma_game_mushroom_spawn() {
     for (uint8_t i = 0; i < NUM_MUSHROOMS; i++) {
-        if (!mushroom[i].isReset && mushroom[i].visible == BLACK) {
-            uint32_t new_x = gen_random_pos_mushroom(i);
+        if (mushroom[i].visible == BLACK) {
+            uint32_t new_x = gen_random_pos_mushroom();
             mushroom[i].x = new_x;
+            mushroom[i].y = AXIS_Y_MUSHROOM;
             mushroom[i].visible = WHITE;
+            mushroom[i].turnBack = false;
         }
     }
 }
 
-void ma_game_mushroom_handle(ak_msg_t* msg) {
+void ma_game_mushroom_down(){
+    for (uint8_t i = 0; i < NUM_MUSHROOMS; i++) {
+        if (mushroom[i].isDown == true) {
+            mushroom[i].y += STEP_MUSHROOM_AXIS_Y_DOWN;
+            if (mushroom[i].y >= LCD_HEIGHT) {
+                mushroom[i].y = AXIS_Y_MUSHROOM;
+                mushroom[i].visible = BLACK;
+                // mushroom[i].x = gen_random_pos_mushroom();
+                mushroom[i].isDown = false;
+                ma_game_score += 100;
+            }
+        }
+    }
+}
+
+void ma_game_mushroom_handler(ak_msg_t* msg) {
     switch (msg->sig) {
     case MA_GAME_MUSHROOM_SETUP: {
         APP_DBG_SIG("MA_GAME_MUSHROOM_SETUP\n");
@@ -102,18 +169,14 @@ void ma_game_mushroom_handle(ak_msg_t* msg) {
         ma_game_mushroom_crash();
     }
         break;
-
+    case MA_GAME_MUSHROOM_BULLET_CRASH: {
+        APP_DBG_SIG("MA_GAME_MUSHROOM_BULLET_CRASH\n");
+        ma_game_mushroom_bullet_crash();
+    }
+        break;
     case MA_GAME_MUSHROOM_DOWN: {
         APP_DBG_SIG("MA_GAME_MUSHROOM_DOWN\n");
-        // for (uint8_t i = 0; i < NUM_MUSHROOMS; i++) {
-        //     if (mushroom[i].state == DOWN) {
-        //         mushroom[i].y += STEP_MUSHROOM_AXIS_Y_DOWN;
-        //         if (mushroom[i].y >= LCD_HEIGHT) {
-        //             mushroom[i].y = AXIS_Y_MUSHROOM;
-        //             mushroom[i].visible = BLACK;
-        //         }
-        //     }
-        // }
+        ma_game_mushroom_down();
     }
         break;
 

@@ -154,7 +154,7 @@ enum {
 /*****************************************************************************/
 /* define timer */
 #define MA_GAME_TIME_TICK_INTERVAL									(100)
-#define MA_GAME_TIME_EXIT_INTERVAL									(3000)
+#define MA_GAME_TIME_EXIT_INTERVAL									(5000)
 #define MA_GAME_MARIO_DOWN_INTERVAL									(600)
 #define MA_GAME_MARIO_LEFT_INTERVAL									(300)
 #define MA_GAME_MUSHROOM_DOWN_INTERVAL								(200)
@@ -163,6 +163,8 @@ enum {
 enum {
 	MA_GAME_INITIAL_SETUP = AK_USER_DEFINE_SIG,
 	MA_GAME_TIME_TICK = MA_GAME_DEFINE_SIG,
+	MA_GAME_BRICK_QUESTION_BLINK,
+	MA_GAME_WIN,
 	MA_GAME_RESET,
 	MA_GAME_EXIT_GAME,
 };
@@ -181,8 +183,11 @@ enum {
 	MA_GAME_MARIO_RIGHT,
 	MA_GAME_MARIO_LEFT,
 	MA_GAME_MARIO_CRASH,
+	MA_GAME_MARIO_BOSS_BULLET_CRASH,
 	MA_GAME_MARIO_DOWN,
-	MA_GAME_MARIO_GET_BIG,
+	MA_GAME_MARIO_GET_ITEM,
+	MA_GAME_MARIO_MUSHROOMSUPER_READY,
+	MA_GAME_MARIO_FIREFLOWER_READY,
 	MA_GAME_MARIO_RESET,
 };
 
@@ -196,9 +201,28 @@ enum {
 	MA_GAME_MUSHROOM_SETUP = MA_GAME_DEFINE_SIG,
 	MA_GAME_MUSHROOM_RUN,
 	MA_GAME_MUSHROOM_CRASH,
+	MA_GAME_MUSHROOM_BULLET_CRASH,
 	MA_GAME_MUSHROOM_DOWN,
 	MA_GAME_MUSHROOM_RESPAWN,
 	MA_GAME_MUSHROOM_RESET,
+};
+/*****************************************************************************/
+/*  Mario game 'BRICK' task define
+ */
+/*****************************************************************************/
+enum {
+	MA_GAME_BRICK_SETUP = MA_GAME_DEFINE_SIG,
+	MA_GAME_BRICK_UPDATE,
+	MA_GAME_BRICK_RESPAWN,
+	MA_GAME_BRICK_RESET
+};
+/*****************************************************************************/
+/*  Mario game 'WARNING' task define
+ */
+/*****************************************************************************/
+enum {
+	MA_GAME_WARNING_SETUP = MA_GAME_DEFINE_SIG,
+	MA_GAME_WARNING_RESET
 };
 /*****************************************************************************/
 /*  Mario game 'BLOCK' task define
@@ -208,8 +232,8 @@ enum {
 	MA_GAME_BLOCK_SETUP = MA_GAME_DEFINE_SIG,
 	MA_GAME_BLOCK_UPDATE,
 	MA_GAME_BLOCK_RESPAWN,
+	MA_GAME_BLOCK_RESET
 };
-
 /*****************************************************************************/
 /*  Mario game 'MUSHROOMSUPER' task define
  */
@@ -219,6 +243,49 @@ enum {
 	MA_GAME_MUSHROOMSUPER_SPAWN,
 	MA_GAME_MUSHROOMSUPER_UPDATE,
 	MA_GAME_MUSHROOMSUPER_RESET,
+};
+/*****************************************************************************/
+/*  Mario game 'FIREFLOWER' task define
+ */
+/*****************************************************************************/
+enum {
+	MA_GAME_FIREFLOWER_SETUP = MA_GAME_DEFINE_SIG,
+	MA_GAME_FIREFLOWER_SPAWN,
+	MA_GAME_FIREFLOWER_UPDATE,
+	MA_GAME_FIREFLOWER_RESET,
+};
+/*****************************************************************************/
+/*  Mario game 'MARIO FIRE BULLET' task define
+ */
+/*****************************************************************************/
+enum {
+	MA_GAME_BULLET_SETUP = MA_GAME_DEFINE_SIG,
+	MA_GAME_BULLET_SPAWN,
+	MA_GAME_BULLET_UPDATE,
+	MA_GAME_BULLET_RESET,
+};
+/*****************************************************************************/
+/*  Mario game 'BOSS' task define
+ */
+/*****************************************************************************/
+enum {
+	MA_GAME_BOSS_SETUP = MA_GAME_DEFINE_SIG,
+	MA_GAME_BOSS_SPAWN,
+	MA_GAME_BOSS_GET_HIT,
+	MA_GAME_BOSS_UPDATE,
+	MA_GAME_BOSS_DOWN,
+	MA_GAME_BOSS_RESET,
+};
+/*****************************************************************************/
+/*  Mario game 'BOSS BULET' task define
+ */
+/*****************************************************************************/
+enum {
+	// MA_GAME_BOSS_BULLET_SETUP = MA_GAME_DEFINE_SIG,
+	MA_GAME_BOSS_BULLET_SPAWN,
+	MA_GAME_BOSS_BULLET_UPDATE,
+	// MA_GAME_BOSS_BULLET_CRASH,
+	MA_GAME_BOSS_BULLET_RESET,
 };
 /*****************************************************************************/
 /*  app function declare

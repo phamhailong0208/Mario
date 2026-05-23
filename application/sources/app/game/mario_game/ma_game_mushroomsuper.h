@@ -17,7 +17,7 @@
 #include "scr_mario_game.h"
 
 
-#define NUM_MUSHROOMS             (2)
+// #define NUM_MUSHROOMS             (2)
 #define SIZE_BITMAP_MUSHROOMSUPER_X    (10)
 #define SIZE_BITMAP_MUSHROOMSUPER_Y    (10)
 #define STEP_MUSHROOMSUPER_STEP_X          (5)
@@ -27,6 +27,7 @@
 typedef struct {
     bool visible;
     uint32_t x, y;
+    // bool isMoving;
     // mushroom_state state;
     // uint8_t action_image;
 } ma_game_mushroom_super_t;

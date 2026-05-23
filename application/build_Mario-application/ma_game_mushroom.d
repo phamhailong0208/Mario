@@ -157,4 +157,6 @@ build_Mario-application/ma_game_mushroom.o: \
  sources/app/screens/screens_bitmap.h sources/app/screens/scr_idle.h \
  sources/app/screens/scr_startup.h sources/app/screens/scr_info.h \
  sources/app/screens/scr_startup.h sources/app/screens/scr_mario_game.h \
- sources/app/game/mario_game/ma_game_mario.h
+ sources/app/game/mario_game/ma_game_mario.h \
+ sources/app/game/mario_game/ma_game_bullet.h \
+ sources/app/game/mario_game/ma_game_brick.h

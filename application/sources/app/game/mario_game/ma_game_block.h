@@ -19,18 +19,21 @@
 #define SIZE_BITMAP_BLOCK_X (10)
 #define SIZE_BITMAP_BLOCK_Y (10)
 
+#define BLOCK_X_INTERVAL    (180)
 
 enum BlockType { BLOCK_BRICK, BLOCK_QUESTION };
 
 typedef struct {
     bool visible;
     uint32_t x, y;
+    uint32_t spawn_x, spawn_y;
     BlockType type;
-    bool hit;
+    // bool hit;
     bool active;
 } ma_game_block_t;
 
 extern ma_game_block_t block[NUM_BLOCKS];
 
+extern bool isFirstSpawn;
 
 #endif //__MA_GAME_BLOCK_H__

@@ -23,11 +23,17 @@ const task_t app_task_table[] = {
 	/*************************************************************************/
 	/* MARIO GAME */
 	/*************************************************************************/
-	{MA_GAME_MARIO_ID			,	TASK_PRI_LEVEL_4	,	ma_game_mario_handle},
-	{MA_GAME_MUSHROOM_ID		,	TASK_PRI_LEVEL_4	,	ma_game_mushroom_handle	},
+	{MA_GAME_MARIO_ID			,	TASK_PRI_LEVEL_4	,	ma_game_mario_handler},
+	{MA_GAME_MUSHROOM_ID		,	TASK_PRI_LEVEL_4	,	ma_game_mushroom_handler	},
+	{MA_GAME_BRICK_ID			,	TASK_PRI_LEVEL_4	,	ma_game_brick_handler},
 	{MA_GAME_BLOCK_ID			,	TASK_PRI_LEVEL_4	,	ma_game_block_handler	},
 	{MA_GAME_MUSHROOMSUPER_ID	,	TASK_PRI_LEVEL_4	,	ma_game_mushroom_super_handler},
-	{MA_GAME_SCREEN_ID			,	TASK_PRI_LEVEL_4	,	scr_mario_game_handle	},
+	{MA_GAME_FIREFLOWER_ID		, 	TASK_PRI_LEVEL_4	,	ma_game_fireflower_handler},
+	{MA_GAME_BULLET_ID			, 	TASK_PRI_LEVEL_4	,	ma_game_bullet_handler},
+	{MA_GAME_BOSS_ID			,	TASK_PRI_LEVEL_4	,	ma_game_boss_handler},
+	{MA_GAME_BOSS_BULLET_ID		, 	TASK_PRI_LEVEL_4	,	ma_game_boss_bullet_handler},
+	{MA_GAME_WARNING_ID			, 	TASK_PRI_LEVEL_4	,	ma_game_warning_handler},
+	{MA_GAME_SCREEN_ID			,	TASK_PRI_LEVEL_4	,	scr_mario_game_handler	},
 	
 	#if defined(TASK_ZIGBEE_EN)
 	{AC_TASK_ZIGBEE_ID			,	TASK_PRI_LEVEL_4	,	task_zigbee			},

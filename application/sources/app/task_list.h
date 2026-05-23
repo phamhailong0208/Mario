@@ -29,8 +29,14 @@ enum {
 	/* MARIO GAME ID */
 	MA_GAME_MARIO_ID,
 	MA_GAME_MUSHROOM_ID,
+	MA_GAME_BRICK_ID,
 	MA_GAME_BLOCK_ID,
 	MA_GAME_MUSHROOMSUPER_ID,
+	MA_GAME_FIREFLOWER_ID,
+	MA_GAME_BULLET_ID,
+	MA_GAME_BOSS_ID,
+	MA_GAME_BOSS_BULLET_ID,
+	MA_GAME_WARNING_ID,
 	MA_GAME_SCREEN_ID,
 
 #if defined(TASK_ZIGBEE_EN)
@@ -91,11 +97,17 @@ extern void task_rf24_mac(ak_msg_t*);
 extern void task_rf24_nwk(ak_msg_t*);
 
 /* MARIO GAME HANDLE */
-extern void ma_game_mario_handle(ak_msg_t*);
-extern void ma_game_mushroom_handle(ak_msg_t*);
+extern void ma_game_mario_handler(ak_msg_t*);
+extern void ma_game_mushroom_handler(ak_msg_t*);
+extern void ma_game_brick_handler(ak_msg_t*);
 extern void ma_game_block_handler(ak_msg_t*);
 extern void ma_game_mushroom_super_handler(ak_msg_t*);
-extern void scr_mario_game_handle(ak_msg_t*);
+extern void ma_game_fireflower_handler(ak_msg_t*);
+extern void ma_game_bullet_handler(ak_msg_t*);
+extern void ma_game_boss_handler(ak_msg_t*);
+extern void ma_game_boss_bullet_handler(ak_msg_t*);
+extern void ma_game_warning_handler(ak_msg_t*);
+extern void scr_mario_game_handler(ak_msg_t*);
 
 /* LINK TASK */
 extern void task_link_phy(ak_msg_t*);

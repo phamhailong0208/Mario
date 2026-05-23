@@ -1,2 +1,0 @@
-sources/app/screens/scr_peashooter.cpp:28:6:void scr_peashooter_handle(ak_msg_t*)	0	static
-sources/app/screens/scr_peashooter.cpp:3:13:void view_scr_peashooter()	32	static

@@ -159,4 +159,7 @@ build_Mario-application/ma_game_mario.o: \
  sources/app/screens/scr_startup.h sources/app/screens/scr_mario_game.h \
  sources/app/game/mario_game/ma_game_mushroom.h \
  sources/app/game/mario_game/ma_game_block.h \
- sources/app/game/mario_game/ma_game_mushroomsuper.h
+ sources/app/game/mario_game/ma_game_mushroomsuper.h \
+ sources/app/game/mario_game/ma_game_fireflower.h \
+ sources/app/game/mario_game/ma_game_boss_bullet.h \
+ sources/app/game/mario_game/ma_game_brick.h

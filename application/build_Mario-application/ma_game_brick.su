@@ -1,0 +1,5 @@
+sources/app/game/mario_game/ma_game_brick.cpp:5:6:void ma_game_brick_setup()	0	static
+sources/app/game/mario_game/ma_game_brick.cpp:11:6:void ma_game_brick_update()	0	static
+sources/app/game/mario_game/ma_game_brick.cpp:20:6:void ma_game_brick_respawn()	16	static
+sources/app/game/mario_game/ma_game_brick.cpp:25:6:void ma_game_brick_reset()	0	static
+sources/app/game/mario_game/ma_game_brick.cpp:30:6:void ma_game_brick_handler(ak_msg_t*)	8	static

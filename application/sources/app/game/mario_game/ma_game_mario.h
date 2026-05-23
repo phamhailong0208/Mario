@@ -15,7 +15,7 @@
 
 #include "scr_mario_game.h"
 #define STEP_MARIO_AXIS_Y_SMALL     (20)
-#define STEP_MARIO_AXIS_Y           (25)
+#define STEP_MARIO_AXIS_Y           (20)
 #define STEP_MARIO_AXIS_X     (1)
 #define STEP_MARIO_AXIS_Y_DOWN (5)
 #define STEP_MUSHROOM_AXIS_Y_DOWN (5)
@@ -27,12 +27,21 @@
 #define AXIS_Y_MARIO          (38 + SIZE_BITMAP_MARIO_Y_SMALL - SIZE_BITMAP_MARIO_Y)
 #define AXIS_Y_MARIO_SMALL    (38)
 
+
+enum MarioState {
+    SMALL = 0,
+    BIG,
+    FIRE
+};
+
 typedef struct {
     bool visible;
     uint32_t x, y;
     // uint8_t action_image;
-    bool isBig;
+    // bool isBig;
+    MarioState state;
     uint8_t on_ground;
+    uint8_t on_brick;
 } ma_game_mario_t;
 
 extern ma_game_mario_t mario;

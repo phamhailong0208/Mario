@@ -1,0 +1,7 @@
+sources/app/game/mario_game/ma_game_boss_bullet.cpp:23:6:void ma_game_boss_bullet_update()	24	static
+sources/app/game/mario_game/ma_game_boss_bullet.cpp:34:6:void ma_game_boss_bullet_reset()	0	static
+/home/longph19/Workspace/Tools/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/vector.tcc:426:7:) [with _Args = {const ma_game_boss_bullet_t&}; _Tp = ma_game_boss_bullet_t; _Alloc = std::allocator<ma_game_boss_bullet_t>]	40	static
+sources/app/game/mario_game/ma_game_boss_bullet.cpp:14:6:void ma_game_boss_bullet_spawn()	16	static
+sources/app/game/mario_game/ma_game_boss_bullet.cpp:42:6:void ma_game_boss_bullet_handler(ak_msg_t*)	8	static
+sources/app/game/mario_game/ma_game_boss_bullet.cpp:67:1:cpp)	0	static
+sources/app/game/mario_game/ma_game_boss_bullet.cpp:67:1:cpp)	0	static

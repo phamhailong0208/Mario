@@ -17,24 +17,17 @@
 #include "scr_mario_game.h"
 
 
-#define NUM_MUSHROOMS             (2)
+#define NUM_MUSHROOMS             (1)
 #define SIZE_BITMAP_MUSHROOM_X    (12)
 #define SIZE_BITMAP_MUSHROOM_Y    (12)
 #define AXIS_Y_MUSHROOM          (39)
-
-// enum mushroom_state {
-//     DOWN =0,
-//     RUN
-// };
-
 
 
 typedef struct {
     bool visible;
     uint32_t x, y;
-    // mushroom_state state;
-    bool isReset;
-    // uint8_t action_image;
+    bool isDown;
+    bool turnBack;
 } ma_game_mushroom_t;
 
 extern ma_game_mushroom_t mushroom[NUM_MUSHROOMS];

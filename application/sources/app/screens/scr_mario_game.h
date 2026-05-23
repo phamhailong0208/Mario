@@ -31,15 +31,18 @@
 
 #define GAME_OFF		(0)
 #define GAME_PLAY		(1)
-#define GAME_OVER		(2)
+#define GAME_WIN        (2)
+#define GAME_OVER		(3)
 
 extern uint8_t ma_game_state;
 extern uint16_t count_map_width;
 extern uint16_t camera_x;
+extern uint8_t brick_question_blink;
+extern uint32_t ma_game_score;
 // extern ma_game_setting_t settingsetup;
 
 extern view_dynamic_t dyn_view_item_mario_game;
 extern view_screen_t scr_mario_game;
-extern void scr_mario_game_handle(ak_msg_t* msg);
+extern void scr_mario_game_handler(ak_msg_t* msg);
 // extern uint32_t ma
 #endif //__SCR_MARIO_GAME_H__
