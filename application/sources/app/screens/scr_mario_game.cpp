@@ -1,5 +1,4 @@
 #include "scr_mario_game.h"
-#include "screens.h"
 #include "ma_game_mario.h"
 #include "ma_game_mushroom.h"
 #include "ma_game_brick.h"
@@ -249,9 +248,9 @@ void view_scr_mario_game() {
 // }
 
 void ma_game_save_and_reset_score() {
-	eeprom_write(	EEPROM_SCORE_PLAY_ADDR, \
-					(uint8_t*)&ma_game_score, \
-					sizeof(ma_game_score));
+	// eeprom_write(	EEPROM_SCORE_PLAY_ADDR, \
+	// 				(uint8_t*)&ma_game_score, \
+	// 				sizeof(ma_game_score));
 	gamescore.score_now = ma_game_score;
 	ma_game_score = 0;
 }

@@ -69,8 +69,8 @@ void screen_tran_menu() {
 			SCREEN_TRAN(scr_mario_game_handler,	&scr_mario_game	);
 		break;
 	case 1:	// item 2
-			// SCREEN_TRAN(scr_chart_game_handler,	&scr_chart_game	);
-            APP_DBG_SIG("item2");
+			SCREEN_TRAN(scr_chart_game_handler,	&scr_chart_game	);
+            // APP_DBG_SIG("item2");
 		break;
 	case 2:	// item 3
 			SCREEN_TRAN(scr_idle_handle,		&scr_idle );
@@ -93,7 +93,6 @@ void scr_menu_game_handler(ak_msg_t* msg) {
 	case AC_DISPLAY_BUTTON_MODE_RELEASED: {
 		APP_DBG_SIG("AC_DISPLAY_BUTTON_MODE_RELEASED\n");
 		screen_tran_menu();
-
 	}
 		break;
 

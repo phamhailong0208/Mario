@@ -50,7 +50,7 @@ void view_scr_chart_game() {
 /*****************************************************************************/
 /* Handle - Charts game */
 /*****************************************************************************/
-void scr_chart_game_handle(ak_msg_t* msg) {
+void scr_chart_game_handler(ak_msg_t* msg) {
 	switch (msg->sig) {
 	case SCREEN_ENTRY: {
 		APP_DBG_SIG("SCREEN_ENTRY\n");

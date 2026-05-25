@@ -1,5 +1,5 @@
-#ifndef __SCR_CHARTS_GAME_H__
-#define __SCR_CHARTS_GAME_H__
+#ifndef __SCR_CHART_GAME_H__
+#define __SCR_CHART_GAME_H__
 
 #include "fsm.h"
 #include "port.h"
@@ -25,6 +25,6 @@
 
 extern view_dynamic_t dyn_view_item_chart_game;
 extern view_screen_t scr_chart_game;
-extern void scr_charts_game_handle(ak_msg_t* msg);
+extern void scr_chart_game_handle(ak_msg_t* msg);
 
-#endif //__SCR_CHARTS_GAME_H__
+#endif //__SCR_CHART_GAME_H__

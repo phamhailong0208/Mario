@@ -50,7 +50,8 @@ void scr_startup_handle(ak_msg_t* msg) {
 		APP_DBG_SIG("AC_DISPLAY_BUTON_MODE_RELEASED\n");
 		timer_remove_attr(AC_TASK_DISPLAY_ID, AC_DISPLAY_SHOW_IDLE);
 		// SCREEN_TRAN(scr_idle_handle, &scr_idle);
-		SCREEN_TRAN(scr_mario_game_handler, &scr_mario_game);
+		// SCREEN_TRAN(scr_mario_game_handler, &scr_mario_game);
+		SCREEN_TRAN(scr_menu_game_handler, &scr_menu_game);
 	}
 		break;
 

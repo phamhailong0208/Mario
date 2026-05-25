@@ -2,12 +2,13 @@
 #define __SCREENS_H__
 
 #include "scr_mario_game.h"
-// #include "scr_charts_game.h"
+#include "scr_chart_game.h"
 // #include "scr_game_over.h"
 // #include "scr_game_setting.h"
-// #include "scr_menu_game.h"
+#include "scr_menu_game.h"
 #include "scr_idle.h"
 #include "scr_startup.h"
+
 
 // scr_archery_game
 extern view_dynamic_t dyn_view_item_mario_game;
