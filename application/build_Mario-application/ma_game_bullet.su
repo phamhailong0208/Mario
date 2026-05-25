@@ -1,5 +1,0 @@
-sources/app/game/mario_game/ma_game_bullet.cpp:10:6:void ma_game_bullet_setup()	0	static
-sources/app/game/mario_game/ma_game_bullet.cpp:18:6:void ma_game_bullet_spawn()	0	static
-sources/app/game/mario_game/ma_game_bullet.cpp:29:6:void ma_game_bullet_update()	0	static
-sources/app/game/mario_game/ma_game_bullet.cpp:42:6:void ma_game_bullet_reset()	0	static
-sources/app/game/mario_game/ma_game_bullet.cpp:48:6:void ma_game_bullet_handler(ak_msg_t*)	8	static
