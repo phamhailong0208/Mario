@@ -15,7 +15,6 @@ extern "C"
 
 #include "ak.h"
 
-
 #include "app_if.h"
 #include "app_eeprom.h"
 #include "app_data.h"

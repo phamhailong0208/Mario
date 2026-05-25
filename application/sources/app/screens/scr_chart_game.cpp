@@ -58,14 +58,14 @@ void scr_chart_game_handler(ak_msg_t* msg) {
 		view_render_display_on();
 		// Read score 
 		eeprom_read(	EEPROM_SCORE_START_ADDR, \
-						(uint8_t*)&gamescore_charts, \
-						sizeof(gamescore_charts));
+						(uint8_t*)&gamescore_chart, \
+						sizeof(gamescore_chart));
 	}
 		break;
 
 	case AC_DISPLAY_BUTTON_MODE_RELEASED: {
 		APP_DBG_SIG("AC_DISPLAY_BUTTON_MODE_RELEASED\n");
-		SCREEN_TRAN(scr_menu_game_handle, &scr_menu_game);	
+		SCREEN_TRAN(scr_menu_game_handler, &scr_menu_game);	
 	}
 		// BUZZER_PlayTones(tones_cc);
 		break;
@@ -73,12 +73,12 @@ void scr_chart_game_handler(ak_msg_t* msg) {
 	case AC_DISPLAY_BUTTON_UP_LONG_PRESSED: {
 		APP_DBG_SIG("AC_DISPLAY_BUTTON_UP_LONG_PRESSED\n");
 		// Reset score charts
-		gamescore_charts.score_1st = 0;
-		gamescore_charts.score_2nd = 0;
-		gamescore_charts.score_3rd = 0;
-		eeprom_write(	EEPROM_SCORE_START_ADDR, \
-						(uint8_t*)&gamescore_charts, \
-						sizeof(gamescore_charts));
+		// gamescore_chart.score_1st = 0;
+		// gamescore_chart.score_2nd = 0;
+		// gamescore_chart.score_3rd = 0;
+		// eeprom_write(	EEPROM_SCORE_START_ADDR, \
+		// 				(uint8_t*)&gamescore_chart, \
+		// 				sizeof(gamescore_chart));
 	}
 		// BUZZER_PlayTones(tones_cc);
 		break;

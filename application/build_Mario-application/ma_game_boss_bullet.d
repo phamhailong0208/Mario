@@ -154,8 +154,10 @@ build_Mario-application/ma_game_boss_bullet.o: \
  /home/longph19/Workspace/Tools/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/vector.tcc \
  sources/app/screens/screens.h sources/app/screens/scr_mario_game.h \
  sources/driver/eeprom/eeprom.h sources/app/app_eeprom.h \
- sources/app/screens/screens_bitmap.h sources/app/screens/scr_idle.h \
- sources/app/screens/scr_startup.h sources/app/screens/scr_info.h \
- sources/app/screens/scr_startup.h sources/app/screens/scr_mario_game.h \
+ sources/app/screens/screens_bitmap.h \
+ sources/app/screens/scr_chart_game.h sources/app/screens/scr_menu_game.h \
+ sources/app/screens/scr_idle.h sources/app/screens/scr_startup.h \
+ sources/app/screens/scr_info.h sources/app/screens/scr_startup.h \
+ sources/app/screens/scr_mario_game.h \
  sources/app/game/mario_game/ma_game_mario.h \
  sources/app/game/mario_game/ma_game_boss.h
